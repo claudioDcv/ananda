@@ -1,6 +1,9 @@
 import os
 import datetime
 
+ENVS = []
+with open('/home/ananda/env.txt') as f:
+    ENVS = f.read().splitlines()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -9,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ylk6-^zz+y8=y#t)tomxwi6!642l%_5+i+_7^uakc8)26hp7#s'
+SECRET_KEY = ENVS[0]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,9 +81,9 @@ WSGI_APPLICATION = 'ananda_software.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ananda_db',
-	'USER': 'ananda_user',
-	'PASSWORD': 'acorderesus4',
+        'NAME': ENVS[1],
+	'USER': ENVS[2],
+	'PASSWORD': ENVS[3],
 	'HOST': 'localhost',
 	'PORT': '',
     }

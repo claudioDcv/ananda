@@ -1,4 +1,3 @@
-import os
 from django.core.serializers import serialize
 from django.contrib.auth.models import User
 from rest_framework import serializers
@@ -69,7 +68,7 @@ class ControlSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'captured_date', 'humidity', 'pH', 'description', 'plant', 'plant_name', 'created_date', 'modified_date', 'temperature', 'user_id')
 
     def get_user_id(self, obj):
-        return obj.plant.user_id + os.environ['ANANDA_NAME']
+        return obj.plant.user_id
 
     def create(self, validated_data):
 
